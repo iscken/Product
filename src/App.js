@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Greate from './components/greate';
+import Product from './components/Product';
+import Deteils from './components/productDeteils';
+import Basket from './components/Basket';
+import Favorite from './components/Favorite';
+import Search from './components/search';
+import { useState } from 'react';
+
 
 function App() {
+  const [value, setValue] = useState("")
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header setValue={setValue}/>
+    <Routes>
+    <Route path='/Greate' element={<Greate/>}/>
+    <Route path='/Product' element={<Product/>}/>
+    <Route path='/Deteils' element={<Deteils/>}/>
+    <Route path='/Basket' element={<Basket/>}/>
+    <Route path='/Favorite' element={<Favorite/>}/>
+    <Route path='/Search' element={<Search value={value}/>}/>
+
+    </Routes>
+
     </div>
   );
 }
